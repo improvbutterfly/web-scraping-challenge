@@ -15,8 +15,10 @@
       <h1>Mission to Mars</h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
     </div>
-    <img src="{{ mars.featured_img_url }}">
+    <img src="{{ mars.featured_image_url }}">
+    {% autoescape false %}
     {{ mars.mars_facts }}
+    {% endautoescape %}
   </div>
   </div>
 </body>

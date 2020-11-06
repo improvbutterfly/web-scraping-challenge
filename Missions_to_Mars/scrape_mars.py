@@ -2,13 +2,21 @@
 from splinter import Browser
 from bs4 import BeautifulSoup
 import pandas as pd
+from time import sleep
+
+# Alternative to splinter
+#from selenium import webdriver
 
 # Chrome driver won't work on my computer without this
 from webdriver_manager.chrome import ChromeDriverManager
 
 def scrape():
-	# Connect to browser
 	executable_path = {'executable_path': ChromeDriverManager().install()}
+
+	# Selenium webdriver connection
+	#driver = webdriver.Chrome(**executable_path)
+
+	# Connect to browser
 	browser = Browser('chrome', **executable_path, headless=False)
 
 	#############
@@ -18,15 +26,19 @@ def scrape():
 	# Website to scrape
 	url = 'https://mars.nasa.gov/news/'
 	browser.visit(url)
+	#driver.get(url)
+
+	# Sleep so JavaScript has time to render needed HTML
+	sleep(5)
 
 	# Save html into BeautifulSoup
-	html = browser.html
+	html = browser.html 
+	#html = driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
 	soup = BeautifulSoup(html, 'html.parser')
-	#print(soup)
 
 	# Find just the first headline
 	first_article = soup.find('div', class_='list_text')
-	print(first_article)
+	#print(first_article)
 
 	try:
 		# scrape the article header 
