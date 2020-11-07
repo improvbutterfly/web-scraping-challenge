@@ -11,10 +11,10 @@
 </head>
 
 <body class="bg-warning">
-  <div class="container-fluid">
-    <div class="jumbotron text-center">
+  <div class="container-fluid" style="margin-top: 15px">
+    <div class="jumbotron text-center" style="background: #DD6A3C">
       <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+      <p><a class="btn btn-light btn-lg" href="/scrape" role="button">Get Data!</a></p>
     </div>
     <h2>Latest Mars News</h2>
     <h3>{{ mars.news_title }}</h3>
@@ -28,7 +28,7 @@
       </div>
       <div class="col-sm-12 col-md-5">
         <h2>Mars Facts</h2>
-        <div class="table table-responsive">
+        <div class="table table-responsive" style="background: #DD6A3C; max-width: 419px">
           {% autoescape false %}
           {{ mars.mars_facts }}
           {% endautoescape %}
